@@ -14,11 +14,9 @@
 )
 
 (deflayer SYMBOLS_NUMPAD
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-       XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-  XX   @s00 @    {    }    \         *    7    8    9    &    XX   XX   XX
-  XX   #    $    \(   @syP `         0    @sy4 5    6    =    XX   XX
-  XX   ^    %    [    ]    ~    @BQ  '    1    2    3    -    XX   XX
-  XX   XX   @BQ  lctl           lsft           lctl @BQ  _    XX   XX
+  @s00 @    {    }    \         *    7    8    9    &
+  #    $    \(   @syP `         0    @sy4 5    6    =
+  ^    %    [    ]    ~         '    1    2    3    -
+            @BQ  lctl      lsft      lctl @BQ
 )
 

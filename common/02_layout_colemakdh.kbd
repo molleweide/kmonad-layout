@@ -32,10 +32,8 @@
 )
 
 (deflayer BASE_LAYER_COLEMAKDH
-  _    XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-       XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-  XX   @c00 @c01 @c02 @c03 @c04      @c05 @c06 @c07 @c08 @c09 XX   XX   XX
-  XX   @c10 @c11 @c12 @c13 @c14      @c15 @c16 @c17 @c18 @c19 XX   XX
-  XX   @c20 @c21 @c22 @c23 @c24 XX   @c25 @c26 @c27 @c28 @c29 XX   XX
-  XX   XX   @BQ  @tl2           @spc           @tr2 @BQ  XX   XX   XX
+  @c00 @c01 @c02 @c03 @c04      @c05 @c06 @c07 @c08 @c09
+  @c10 @c11 @c12 @c13 @c14      @c15 @c16 @c17 @c18 @c19
+  @c20 @c21 @c22 @c23 @c24      @c25 @c26 @c27 @c28 @c29
+            @BQ  @tl2      @spc      @tr2 @BQ
 )
