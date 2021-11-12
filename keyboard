@@ -16,9 +16,9 @@ fi
 # --------------------------
 
 declare -A defcfg_input_str=(
-[ergo]="Ergodox EZ"
-[mbair]="Apple Internal Keyboard / Trackpad"
-[mbpro]="Apple Internal Keyboard / Trackpad"
+    [ergo]="Ergodox EZ"
+    [mbair]="Apple Internal Keyboard / Trackpad"
+    [mbpro]="Apple Internal Keyboard / Trackpad"
 )
 
 input="${defcfg_input_str[$1]}"
@@ -36,9 +36,9 @@ fallthrough $fallthrough
 # --------------------------
 
 declare -A defsrc_files=(
-[ergo]="defsrc_ergodox.kbd"
-[mbair]="defsrc_mbair.kbd"
-[mbpro]="defsrc_mbpro_swe.kbd"
+    [ergo]="defsrc_ergodox.kbd"
+    [mbair]="defsrc_mbair.kbd"
+    [mbpro]="defsrc_mbpro_swe.kbd"
 )
 
 defsrc="$config_kmonad_dir/defsrc/${defsrc_files[$1]}"
@@ -54,8 +54,12 @@ compile_layout() {
 }
 
 # bash
-kmonad <(compile_layout) --dry-run
+tmp_file="$(mktemp /tmp/kmonad-XXX)"
+compile_layout > $tmp_file
+sudo kmonad $tmp_file
+# sudo kmonad <(compile_layout) # doesn't work
+# -f doesn't accept `false`. Complains about invalid...
 # kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
 
 # zsh
-# kmonad =(compile_layout) --dry-run
+# sudo kmonad =(compile_layout)
