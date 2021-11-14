@@ -1,0 +1,19 @@
+@document.meta
+    title: TODO
+    description:
+    author: hjalmarjakobsson
+    categories:
+    created: 2021-11-14
+    version: 0.0.8
+@end
+
+ADD THIS FILE TO VIM ALIASES
+
+
+* OS
+
+  ~ rm cmd-w prevent acc close window.
+  ~ rm cmd-q
+
+* KMONAD
+ ** caps lock
