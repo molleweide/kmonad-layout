@@ -1,4 +1,8 @@
-(defalias ;; LAYER BUTTON ALIASES
+;;#| ---------------------------------------------------------------
+;; LAYER BUTTON ALIASES
+;;--------------------------------------------------------------- |#
+
+(defalias
 
  ;; switch keys
   BQ  (layer-switch BASE_LAYER_QWERTY)

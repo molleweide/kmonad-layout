@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# index a string in bash
+# https://unix.stackexchange.com/questions/303960/index-a-string-in-bash
+
 script_path=$(realpath $0)
 config_kmonad_dir=$(dirname $script_path)
 # config_kmonad_dir2="${BASH_SOURCE%/*}"
@@ -16,9 +19,9 @@ fi
 # --------------------------
 
 declare -A defcfg_input_str=(
-    [ergo]="Ergodox EZ"
-    [mbair]="Apple Internal Keyboard / Trackpad"
-    [mbpro]="Apple Internal Keyboard / Trackpad"
+[ergo]="Ergodox EZ"
+[mbair]="Apple Internal Keyboard / Trackpad"
+[mbpro]="Apple Internal Keyboard / Trackpad"
 )
 
 input="${defcfg_input_str[$1]}"
@@ -36,9 +39,9 @@ fallthrough $fallthrough
 # --------------------------
 
 declare -A defsrc_files=(
-    [ergo]="defsrc_ergodox.kbd"
-    [mbair]="defsrc_mbair.kbd"
-    [mbpro]="defsrc_mbpro_swe.kbd"
+[ergo]="defsrc_ergodox.kbd"
+[mbair]="defsrc_mbair.kbd"
+[mbpro]="defsrc_mbpro_swe.kbd"
 )
 
 defsrc="$config_kmonad_dir/defsrc/${defsrc_files[$1]}"
@@ -50,13 +53,37 @@ defsrc="$config_kmonad_dir/defsrc/${defsrc_files[$1]}"
 compile_layout() {
     echo "$defcfg"
     cat $defsrc
-    cat "$config_kmonad_dir/common/"*.kbd
+    # cat "$config_kmonad_dir/common/"*.kbd
+
+    # load my fancy stuff
+    for f in "$config_kmonad_dir/common/"*.kbd; do
+        local filename="$(basename "$f")"
+
+        # # did not work. complain too many arguments to test
+        # if test "${filename:(-5)}"  != '~.kbd' ]]; then
+        #     source "$f"
+        # fi
+
+        if [[ ! $filename =~ "~.kbd" ]]; then
+            cat "$f"
+        fi
+    done
+
+    # complains about syntax err. dunno what..
+    # # load my .sh sources that don't start with ~.
+    # for f in "$config_kmonad_dir/common/"!(.*~$).kbd; do
+    #     cat "$f"
+    # done
+
 }
 
 # bash
 tmp_file="$(mktemp /tmp/kmonad-XXX)"
 compile_layout > $tmp_file
-sudo kmonad $tmp_file
+cat $tmp_file
+kmonad $tmp_file -d
+# sudo kmonad $tmp_file -d
+
 # sudo kmonad <(compile_layout) # doesn't work
 # -f doesn't accept `false`. Complains about invalid...
 # kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
