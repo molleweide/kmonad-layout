@@ -16,5 +16,10 @@ ADD THIS FILE TO VIM ALIASES
   ~ rm cmd-q
 
 * KMONAD
- ** caps lock layer
+ ** router layer -> caps lock layer
  ** router layer -> yabai
+    cmd > test make computer sleep
+        !!! one shot keys >> need to return to base
+
+    cmd > yabai
+
