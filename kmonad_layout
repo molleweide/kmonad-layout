@@ -80,9 +80,9 @@ compile_layout() {
 # bash
 tmp_file="$(mktemp /tmp/kmonad-XXX)"
 compile_layout > $tmp_file
-cat $tmp_file
-kmonad $tmp_file -d
-# sudo kmonad $tmp_file -d
+# cat $tmp_file
+# kmonad $tmp_file -d
+sudo kmonad $tmp_file
 
 # sudo kmonad <(compile_layout) # doesn't work
 # -f doesn't accept `false`. Complains about invalid...
