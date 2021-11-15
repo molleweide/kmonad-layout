@@ -117,16 +117,13 @@ if test "$mode" = "r"; then
 
     # zsh
     # sudo kmonad =(compile_layout)
-    echo "kmo run"
 
 elif test "$mode" = 'c'; then
     cat $tmp_file
-    echo "kmo cat"
 
 elif test "$mode" = 'w'; then
     echo "write layout -> todo..."
 
 elif test "$mode" = 'd'; then
     kmonad $tmp_file -d
-    echo "kmo dry"
 fi
