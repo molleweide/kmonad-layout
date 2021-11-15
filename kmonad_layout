@@ -96,16 +96,44 @@ compile_layout() {
 
 }
 
-# bash
 tmp_file="$(mktemp /tmp/kmonad-XXX)"
 compile_layout > $tmp_file
-# cat $tmp_file
-# kmonad $tmp_file -d
-sudo kmonad $tmp_file
 
-# sudo kmonad <(compile_layout) # doesn't work
-# -f doesn't accept `false`. Complains about invalid...
-# kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
 
-# zsh
-# sudo kmonad =(compile_layout)
+### RUN KMONAD ###
+
+mode="d" # run
+
+# check how to run
+for arg in "$@"; do
+	if test "$arg" = '--cat' -o "$arg" = '-c'; then
+        mode="c"
+	elif test "$arg" = '--write' -o "$arg" = '-w'; then
+	    mode="w" # TODO
+	elif test "$arg" = '--run' -o "$arg" = '-r'; then
+	    mode="r"
+	fi
+done
+
+if test "$mode" = "r"; then
+    # bash
+    sudo kmonad $tmp_file
+    # sudo kmonad <(compile_layout) # doesn't work
+    # -f doesn't accept `false`. Complains about invalid...
+    # kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
+
+    # zsh
+    # sudo kmonad =(compile_layout)
+    echo "kmo run"
+
+elif test "$mode" = 'c'; then
+    cat $tmp_file
+    echo "kmo cat"
+
+elif test "$mode" = 'w'; then
+    echo "write layout -> todo..."
+
+elif test "$mode" = 'd'; then
+    kmonad $tmp_file -d
+    echo "kmo dry"
+fi
