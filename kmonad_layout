@@ -7,6 +7,8 @@ script_path=$(realpath $0)
 config_kmonad_dir=$(dirname $script_path)
 # config_kmonad_dir2="${BASH_SOURCE%/*}"
 
+# TODO: $1 has to be one amongst.
+
 if test -z ${1-}; then
     echo "No input specified. You need to specify what key board"
     echo "you want to run kmonad for."
@@ -77,19 +79,44 @@ compile_layout() {
 
 }
 
-# todo: make optional cat or run or test, so that I don't
-#   have to do this manually...
-
-# bash
 tmp_file="$(mktemp /tmp/kmonad-XXX)"
 compile_layout > $tmp_file
-# cat $tmp_file
-# kmonad $tmp_file -d
-sudo kmonad $tmp_file
 
-# sudo kmonad <(compile_layout) # doesn't work
-# -f doesn't accept `false`. Complains about invalid...
-# kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
 
-# zsh
-# sudo kmonad =(compile_layout)
+### RUN KMONAD ###
+
+mode="r" # run
+
+# check how to run
+for arg in "$@"; do
+	if test "$arg" = '--cat' -o "$arg" = '-c'; then
+        mode="c"
+	elif test "$arg" = '--write' -o "$arg" = '-w'; then
+	    mode="w" # TODO
+	elif test "$arg" = '--dry' -o "$arg" = '-d'; then
+	    mode="d"
+	fi
+done
+
+if test "$mode" = "r"; then
+    # bash
+    sudo kmonad $tmp_file
+    # sudo kmonad <(compile_layout) # doesn't work
+    # -f doesn't accept `false`. Complains about invalid...
+    # kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
+
+    # zsh
+    # sudo kmonad =(compile_layout)
+    echo "kmo run"
+
+elif test "$mode" = 'c'; then
+    cat $tmp_file
+    echo "kmo cat"
+
+elif test "$mode" = 'w'; then
+    echo "write layout -> todo..."
+
+elif test "$mode" = 'd'; then
+    kmonad $tmp_file -d
+    echo "kmo dry"
+fi
