@@ -9,19 +9,12 @@ config_kmonad_dir=$(dirname $script_path)
 
 user_hardwares_list=(
     "ergo"
-     "mbpro"
-     "mbair"
-# [ergo]="Ergodox EZ"
-# [mbair]="Apple Internal Keyboard / Trackpad"
-# [mbpro]="Apple Internal Keyboard / Trackpad"
+    "mbpro"
+    "mbair"
 )
-
-
 
 # select which hardware you want to run kmonad on.
 hw="$(choose-option --confirm --question='Select hardware to run kmonad for.' -- "${user_hardwares_list[@]}")"
-
-echo "hw = $hw"
 
 
 # if test -z ${1-}; then
