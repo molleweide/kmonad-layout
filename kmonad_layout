@@ -7,12 +7,31 @@ script_path=$(realpath $0)
 config_kmonad_dir=$(dirname $script_path)
 # config_kmonad_dir2="${BASH_SOURCE%/*}"
 
-if test -z ${1-}; then
-    echo "No input specified. You need to specify what key board"
-    echo "you want to run kmonad for."
-    echo "(ergo|mbair|mbpro)"
-    exit 1
-fi
+user_hardwares_list=(
+    "ergo"
+     "mbpro"
+     "mbair"
+# [ergo]="Ergodox EZ"
+# [mbair]="Apple Internal Keyboard / Trackpad"
+# [mbpro]="Apple Internal Keyboard / Trackpad"
+)
+
+
+
+# select which hardware you want to run kmonad on.
+hw="$(choose-option --confirm --question='Select hardware to run kmonad for.' -- "${user_hardwares_list[@]}")"
+
+echo "hw = $hw"
+
+
+# if test -z ${1-}; then
+#     # echo-color --error='[setup-mac] is only intended to be run on macOS systems...'
+#     echo "No input specified. You need to specify what key board"
+#     echo "you want to run kmonad for."
+#     echo "(ergo|mbair|mbpro)"
+#     exit 1
+# 	# exit 2
+# fi
 
 # --------------------------
 # ---       cfg       ---
@@ -24,7 +43,7 @@ declare -A defcfg_input_str=(
 [mbpro]="Apple Internal Keyboard / Trackpad"
 )
 
-input="${defcfg_input_str[$1]}"
+input="${defcfg_input_str[$hw]}"
 output="kext"
 fallthrough=false
 
@@ -44,7 +63,7 @@ declare -A defsrc_files=(
 [mbpro]="defsrc_mbpro_swe.kbd"
 )
 
-defsrc="$config_kmonad_dir/defsrc/${defsrc_files[$1]}"
+defsrc="$config_kmonad_dir/defsrc/${defsrc_files[$hw]}"
 
 # ----------------------------------
 # ---      compile and run      ---
