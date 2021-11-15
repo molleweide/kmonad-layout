@@ -77,6 +77,9 @@ compile_layout() {
 
 }
 
+# todo: make optional cat or run or test, so that I don't
+#   have to do this manually...
+
 # bash
 tmp_file="$(mktemp /tmp/kmonad-XXX)"
 compile_layout > $tmp_file
