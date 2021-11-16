@@ -5,15 +5,17 @@
 ;;--------------------------------------------------------------- |#
 
 (defalias
-  dat (cmd-button "date >> /tmp/kmonad_example.txt")   ;; Append date to tmpfile
-  pth (cmd-button "echo $PATH > /tmp/kmonad_path.txt") ;; Write out PATH
-  ;; `dat' on press and `pth' on release
-  bth (cmd-button "date >> /tmp/kmonad_example.txt"
-                  "echo $PATH > /tmp/kmonad_path.txt")
+  ;; dat (cmd-button "date >> /tmp/kmonad_example.txt")   ;; Append date to tmpfile
+  ;; pth (cmd-button "echo $PATH > /tmp/kmonad_path.txt") ;; Write out PATH
+  ;; ;; `dat' on press and `pth' on release
+  ;; bth (cmd-button "date >> /tmp/kmonad_example.txt"
+  ;;                 "echo $PATH > /tmp/kmonad_path.txt")
 
   ;; commands/computer-sleep
   ;; sleep (cmd-button "osascript -e 'tell application \"Finder\" to sleep'")
-  sleep (cmd-button "computer-sleep")
+  sleep (around
+            (cmd-button "computer-sleep")
+            (layer-switch BASE_LAYER_QWERTY))
 )
 
 (deflayer CMD_TESTING
