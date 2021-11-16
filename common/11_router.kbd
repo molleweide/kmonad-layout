@@ -6,7 +6,7 @@
 
 (deflayer ROUTER
   XX   XX   XX   XX   XX        XX   XX   XX   XX   XX
-  XX   XX   XX   @BQ  XX        @BS  @BC  XX   XX   XX
+  XX   XX   XX   @BQ  @CMD      @BS  @BC  XX   XX   XX
   XX   XX   XX   XX   XX        XX   XX   XX   XX   XX
             @BQ  XX        XX        XX   @BQ
 )

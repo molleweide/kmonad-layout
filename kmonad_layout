@@ -110,7 +110,7 @@ done
 
 if test "$mode" = "r"; then
     # bash
-    sudo kmonad $tmp_file
+    sudo kmonad $tmp_file --allow-cmd
     # sudo kmonad <(compile_layout) # doesn't work
     # -f doesn't accept `false`. Complains about invalid...
     # kmonad <(compile_layout) -f $fallthrough -i $input -o $output -d
