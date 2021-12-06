@@ -9,11 +9,13 @@
 
 ADD THIS FILE TO VIM ALIASES
 
+* GULP
 
-* OS
-
-  ~ rm cmd-w prevent acc close window.
-  ~ rm cmd-q
+* rename executable
+ ** build new name >>> keep my backup...
+ ** create backup
+    use cp commands to do this
+        I need to get better at the commandline. so do this
 
 * KMONAD
  ** router layer -> caps lock layer
