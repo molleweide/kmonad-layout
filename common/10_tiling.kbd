@@ -4,6 +4,9 @@
 ;;
 ;;--------------------------------------------------------------- |#
 
+;; testing template
+;; (cmd-button "sudo -u hjalmarjakobsson bash -cl \'\'")
+
 (defalias
   T11 XX
   T12 XX
@@ -20,13 +23,14 @@
   T31 XX
   T32 XX
   T33 XX
-  ;; T34 (cmd-button "yabai-bsp")
-  T34 (cmd-button "sudo zsh -c \'yabai -m space --layout stack\'")
+  T34 (cmd-button "tile layout bsp")
+  ;; T34 (cmd-button "sudo -u hjalmarjakobsson bash -cl \'yabai-bsp\'")
+  ;; sudo -u <current_username> bash -lc '<shell commands>'
   T35 XX
 
   T41 XX
-  T42 (cmd-button "sudo zsh -c \'yabai -m space --layout bsp\'")
-  ;; T42 (cmd-button "yabai-stack")
+  T42 (cmd-button "tile layout stack")
+  ;; T42 (cmd-button "sudo -u hjalmarjakobsson bash -cl \'yabai-stack\'")
   T43 XX
   T44 XX
   T45 XX

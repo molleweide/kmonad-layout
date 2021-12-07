@@ -10,6 +10,13 @@
 how list users
 switch user?
 
+* GULP
+
+* rename executable
+ ** build new name >>> keep my backup...
+ ** create backup
+    use cp commands to do this
+        I need to get better at the commandline. so do this
 
 * KMONAD
  ** router layer -> caps lock layer
