@@ -7,7 +7,8 @@
     version: 0.0.8
 @end
 
-ADD THIS FILE TO VIM ALIASES
+how list users
+switch user?
 
 * GULP
 
@@ -19,9 +20,11 @@ ADD THIS FILE TO VIM ALIASES
 
 * KMONAD
  ** router layer -> caps lock layer
- ** router layer -> yabai
-    cmd > test make computer sleep
-        !!! one shot keys >> need to return to base
+    test left thumb toggle -> spacebar
 
-    cmd > yabai
+ ** router layer -> yabai
+
+    `sudo zsh -c \'yabai -m space --layout bsp\'`
+
+
 
