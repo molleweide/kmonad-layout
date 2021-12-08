@@ -16,7 +16,7 @@
 
   T21 XX
   T22 XX
-  T23 XX
+  T23 (cmd-button "mouse")
   T24 XX
   T25 XX
 

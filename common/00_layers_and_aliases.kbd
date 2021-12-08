@@ -13,6 +13,7 @@
   RTR (layer-switch ROUTER)
   VIM (layer-switch VIM_MODE)
   TIL (layer-switch TILING)
+  TLS (layer-switch TOOLS)
   CMD (layer-switch CMD_TESTING)
     ;; what is the funnest and smartest and most efficient way
     ;; switching over to this vim mode. maybe hold down both
